@@ -22,6 +22,7 @@ typedef struct
     bool isCapturing;
     bool isTranscribing;
     bool isRealtime;
+    bool translate;
     char * language;
     UILabel * labelReceived;
 

@@ -26,8 +26,13 @@ void AudioInputCallback(void * inUserData,
 @property (weak, nonatomic) IBOutlet UIButton   *buttonTranscribe;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerViewLanguage;
 @property (weak, nonatomic) IBOutlet UITextView *textviewResult;
+
 @property (weak, nonatomic) IBOutlet UISwitch *switchRealtime;
 - (IBAction)switchRealtime:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISwitch *switchTranslate;
+- (IBAction)switchTranslate:(id)sender;
+
 @property (strong, nonatomic) NSDictionary *languageMap;
 @property (strong, nonatomic) NSArray *languageKeys;
 
@@ -84,7 +89,8 @@ void AudioInputCallback(void * inUserData,
     }
 
     stateInp.isTranscribing = false;
-    stateInp.isRealtime = false;
+    stateInp.isRealtime = true;
+    stateInp.translate = false;
     
     self.languageMap = @{@"english": @"en", @"chinese": @"zh", @"german": @"de", @"spanish": @"es", @"russian": @"ru", @"korean": @"ko", @"french": @"fr", @"japanese": @"ja", @"portuguese": @"pt", @"turkish": @"tr", @"polish": @"pl", @"catalan": @"ca", @"dutch": @"nl", @"arabic": @"ar", @"swedish": @"sv", @"italian": @"it", @"indonesian": @"id", @"hindi": @"hi", @"finnish": @"fi", @"vietnamese": @"vi", @"hebrew": @"he", @"ukrainian": @"uk", @"greek": @"el", @"malay": @"ms", @"czech": @"cs", @"romanian": @"ro", @"danish": @"da", @"hungarian": @"hu", @"tamil": @"ta", @"norwegian": @"no", @"thai": @"th", @"urdu": @"ur", @"croatian": @"hr", @"bulgarian": @"bg", @"lithuanian": @"lt", @"latin": @"la", @"maori": @"mi", @"malayalam": @"ml", @"welsh": @"cy", @"slovak": @"sk", @"telugu": @"te", @"persian": @"fa", @"latvian": @"lv", @"bengali": @"bn", @"serbian": @"sr", @"azerbaijani": @"az", @"slovenian": @"sl", @"kannada": @"kn", @"estonian": @"et", @"macedonian": @"mk", @"breton": @"br", @"basque": @"eu", @"icelandic": @"is", @"armenian": @"hy", @"nepali": @"ne", @"mongolian": @"mn", @"bosnian": @"bs", @"kazakh": @"kk", @"albanian": @"sq", @"swahili": @"sw", @"galician": @"gl", @"marathi": @"mr", @"punjabi": @"pa", @"sinhala": @"si", @"khmer": @"km", @"shona": @"sn", @"yoruba": @"yo", @"somali": @"so", @"afrikaans": @"af", @"occitan": @"oc", @"georgian": @"ka", @"belarusian": @"be", @"tajik": @"tg", @"sindhi": @"sd", @"gujarati": @"gu", @"amharic": @"am", @"yiddish": @"yi", @"lao": @"lo", @"uzbek": @"uz", @"faroese": @"fo", @"haitian_creole": @"ht", @"pashto": @"ps", @"turkmen": @"tk", @"nynorsk": @"nn", @"maltese": @"mt", @"sanskrit": @"sa", @"luxembourgish": @"lb", @"myanmar": @"my", @"tibetan": @"bo", @"tagalog": @"tl", @"malagasy": @"mg", @"assamese": @"as", @"tatar": @"tt", @"hawaiian": @"haw", @"lingala": @"ln", @"hausa": @"ha", @"bashkir": @"ba", @"javanese": @"jw", @"sundanese": @"su"};
     self.languageKeys = @[@"english", @"german", @"japanese", @"afrikaans", @"albanian", @"amharic", @"arabic", @"armenian", @"assamese", @"azerbaijani", @"bashkir", @"basque", @"belarusian", @"bengali", @"bosnian", @"breton", @"bulgarian", @"catalan", @"chinese", @"croatian", @"czech", @"danish", @"dutch", @"estonian", @"faroese", @"finnish", @"french", @"galician", @"georgian", @"greek", @"gujarati", @"haitian_creole", @"hausa", @"hawaiian", @"hebrew", @"hindi", @"hungarian", @"icelandic", @"indonesian", @"italian", @"javanese", @"kannada", @"kazakh", @"khmer", @"korean", @"lao", @"latin", @"latvian", @"lingala", @"lithuanian", @"luxembourgish", @"macedonian", @"malagasy", @"malay", @"malayalam", @"maltese", @"maori", @"marathi", @"mongolian", @"myanmar", @"nepali", @"norwegian", @"nynorsk", @"occitan", @"pashto", @"persian", @"polish", @"portuguese", @"punjabi", @"romanian", @"russian", @"sanskrit", @"serbian", @"shona", @"sindhi", @"sinhala", @"slovak", @"slovenian", @"somali", @"spanish", @"sundanese", @"swahili", @"swedish", @"tagalog", @"tajik", @"tamil", @"tatar", @"telugu", @"thai", @"tibetan", @"turkish", @"turkmen", @"ukrainian", @"urdu", @"uzbek", @"vietnamese", @"welsh", @"yiddish", @"yoruba"];
@@ -170,6 +176,10 @@ void AudioInputCallback(void * inUserData,
     stateInp.isRealtime = sender.isOn;
 }
 
+- (IBAction)switchTranslate:(UISwitch *)sender {
+    stateInp.translate = sender.isOn;
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
@@ -214,7 +224,7 @@ void AudioInputCallback(void * inUserData,
         params.print_progress   = false;
         params.print_timestamps = true;
         params.print_special    = false;
-        params.translate        = false;
+        params.translate        = self->stateInp.translate;
         params.language         = self->stateInp.language;
         params.n_threads        = max_threads;
         params.offset_ms        = 0;

@@ -22,6 +22,7 @@ typedef struct
     bool isCapturing;
     bool isTranscribing;
     bool isRealtime;
+    char * language;
     UILabel * labelReceived;
 
     AudioQueueRef queue;
@@ -40,6 +41,7 @@ typedef struct
 @interface ViewController : UIViewController
 {
     StateInp stateInp;
+    NSDictionary * languageMap;
 }
 
 @end

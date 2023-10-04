@@ -47,3 +47,15 @@ To enable Metal, just add `-DGGML_USE_METAL` instead off the `-DWHISPER_USE_CORE
 This will make both the Encoder and the Decoder run on the GPU.
 
 If you want to run the Encoder with Core ML and the Decoder with Metal then simply add both `-DWHISPER_USE_COREML -DGGML_USE_METAL` flags. That's all!
+
+## Running the Medium Model with less than 3GB of Memory in Real-time
+On this fork, some changes are made to run the medium model with limited memory so that it can run it on iPhone (I tested with iPhone 12 Pro).
+
+You need to quantize the ggml model to 8bit by the following command:
+```shell
+WHISPER_COREML=1 make -j
+make medium
+./quantize models/ggml-medium.bin models/ggml-medium-q8_0.bin q8_0
+```
+
+Then, download `ggml-medium-encoder.mlmodelc.zip` from [Hugging Face](https://huggingface.co/chidiwilliams/whisper.cpp-coreml/tree/main) and extract the file under `./models`.

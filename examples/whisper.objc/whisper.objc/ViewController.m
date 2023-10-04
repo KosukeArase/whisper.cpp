@@ -59,7 +59,7 @@ void AudioInputCallback(void * inUserData,
     // whisper.cpp initialization
     {
         // load the model
-        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"ggml-small" ofType:@"bin"];
+        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"ggml-medium-q8_0" ofType:@"bin"];
 
         // check if the model exists
         if (![[NSFileManager defaultManager] fileExistsAtPath:modelPath]) {

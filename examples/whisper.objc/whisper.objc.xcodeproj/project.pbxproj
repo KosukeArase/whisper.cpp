@@ -22,8 +22,8 @@
 		7FE3424C2A0C3FA20015A058 /* whisper-encoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7FE342472A0C3FA20015A058 /* whisper-encoder.mm */; };
 		7FE3424D2A0C3FA20015A058 /* whisper-decoder-impl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE3424A2A0C3FA20015A058 /* whisper-decoder-impl.m */; };
 		FB2BEAB72AC6FAB200158CB1 /* ggml.c in Sources */ = {isa = PBXBuildFile; fileRef = 18627C9529052C5800BD2A04 /* ggml.c */; settings = {COMPILER_FLAGS = "-DGGML_USE_ACCELERATE"; }; };
-		FB2BEAC42AC6FDE100158CB1 /* ggml-small.bin in Resources */ = {isa = PBXBuildFile; fileRef = FB2BEAC22AC6FDE100158CB1 /* ggml-small.bin */; };
-		FB2BEAC52AC6FDE100158CB1 /* ggml-small-encoder.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = FB2BEAC32AC6FDE100158CB1 /* ggml-small-encoder.mlmodelc */; };
+		FB70653C2ACDF278008044AD /* ggml-medium-encoder.mlmodelc in Resources */ = {isa = PBXBuildFile; fileRef = FB70653A2ACDF278008044AD /* ggml-medium-encoder.mlmodelc */; };
+		FB70653D2ACDF278008044AD /* ggml-medium-q8_0.bin in Resources */ = {isa = PBXBuildFile; fileRef = FB70653B2ACDF278008044AD /* ggml-medium-q8_0.bin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,8 +66,8 @@
 		7FE342482A0C3FA20015A058 /* whisper-decoder-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "whisper-decoder-impl.h"; sourceTree = "<group>"; };
 		7FE342492A0C3FA20015A058 /* whisper-encoder-impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "whisper-encoder-impl.h"; sourceTree = "<group>"; };
 		7FE3424A2A0C3FA20015A058 /* whisper-decoder-impl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "whisper-decoder-impl.m"; sourceTree = "<group>"; };
-		FB2BEAC22AC6FDE100158CB1 /* ggml-small.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = "ggml-small.bin"; path = "../../../models/ggml-small.bin"; sourceTree = "<group>"; };
-		FB2BEAC32AC6FDE100158CB1 /* ggml-small-encoder.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ggml-small-encoder.mlmodelc"; path = "../../../models/ggml-small-encoder.mlmodelc"; sourceTree = "<group>"; };
+		FB70653A2ACDF278008044AD /* ggml-medium-encoder.mlmodelc */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "ggml-medium-encoder.mlmodelc"; path = "../../../models/ggml-medium-encoder.mlmodelc"; sourceTree = "<group>"; };
+		FB70653B2ACDF278008044AD /* ggml-medium-q8_0.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = "ggml-medium-q8_0.bin"; path = "../../../models/ggml-medium-q8_0.bin"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +100,8 @@
 		18627C7829052BDF00BD2A04 /* whisper.objc */ = {
 			isa = PBXGroup;
 			children = (
-				FB2BEAC32AC6FDE100158CB1 /* ggml-small-encoder.mlmodelc */,
-				FB2BEAC22AC6FDE100158CB1 /* ggml-small.bin */,
+				FB70653A2ACDF278008044AD /* ggml-medium-encoder.mlmodelc */,
+				FB70653B2ACDF278008044AD /* ggml-medium-q8_0.bin */,
 				1844471D2AB2195F007D6BFE /* ggml-metal.metal */,
 				1844471B2AB21655007D6BFE /* ggml-metal.m */,
 				184447182AB211A2007D6BFE /* ggml-alloc.c */,
@@ -198,8 +198,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB2BEAC42AC6FDE100158CB1 /* ggml-small.bin in Resources */,
-				FB2BEAC52AC6FDE100158CB1 /* ggml-small-encoder.mlmodelc in Resources */,
+				FB70653C2ACDF278008044AD /* ggml-medium-encoder.mlmodelc in Resources */,
+				FB70653D2ACDF278008044AD /* ggml-medium-q8_0.bin in Resources */,
 				18627C8929052BE000BD2A04 /* LaunchScreen.storyboard in Resources */,
 				18627C8629052BE000BD2A04 /* Assets.xcassets in Resources */,
 				18627C8429052BDF00BD2A04 /* Main.storyboard in Resources */,
